@@ -92,32 +92,40 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-4. **Download model files**
+4. **Download YOLO model files** (Required - ~240 MB)
 
-Due to file size constraints, the pre-trained model weights are not included in this repository. You'll need to:
+Run the automated download script:
+```bash
+python3 download_yolo.py
+```
 
-- Download YOLOv2 weights (yolo.h5)
-- Download COCO class names (coco_classes.txt)
-- Download anchor boxes (yolo_anchors.txt)
+This downloads:
+- YOLOv3 weights (237 MB) - Pre-trained neural network
+- YOLOv3 configuration - Network architecture
+- COCO class names - 80 object classes
 
-Place these files in the `model_data/` directory.
+All files saved to `model_data/` directory.
 
 ## 💻 Usage
 
 ### Basic Usage
 
-Run detection on a single image:
+Run detection on any image:
 
 ```bash
-python detect.py --image images/test.jpg
+python3 detect_real.py --image images/example.jpg
 ```
 
-### Advanced Usage
+This will:
+- Load the YOLO model
+- Detect objects in the image
+- Draw bounding boxes with labels
+- Save result to `output/` directory
 
-Specify custom configuration:
+### Specify Output Location
 
 ```bash
-python detect.py --image images/test.jpg --config config.yaml --output output/result.jpg
+python3 detect_real.py --image path/to/your/image.jpg --output output/result.jpg
 ```
 
 ### Using as a Library
