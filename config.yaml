@@ -1,0 +1,75 @@
+# YOLO Car Detection Configuration
+
+# Model Configuration
+model:
+  # Path to pre-trained YOLO model weights
+  model_path: "model_data/yolo.h5"
+
+  # Path to class names file (80 COCO classes)
+  classes_path: "model_data/coco_classes.txt"
+
+  # Path to anchor boxes file
+  anchors_path: "model_data/yolo_anchors.txt"
+
+  # Input image size for YOLO model (height, width)
+  input_size: [608, 608]
+
+  # Number of anchor boxes per grid cell
+  num_anchors: 5
+
+  # Number of classes to detect
+  num_classes: 80
+
+# Detection Parameters
+detection:
+  # Maximum number of boxes to detect per image
+  max_boxes: 10
+
+  # Score threshold - boxes with score below this are filtered out
+  # Higher values = fewer, more confident detections
+  score_threshold: 0.6
+
+  # IoU threshold for Non-Max Suppression
+  # Lower values = more aggressive suppression of overlapping boxes
+  iou_threshold: 0.5
+
+# Image Processing
+image:
+  # Original image dimensions (for the car detection dataset)
+  default_shape: [720, 1280]
+
+  # Supported image formats
+  supported_formats: [".jpg", ".jpeg", ".png"]
+
+# Paths
+paths:
+  # Input images directory
+  input_images: "images/"
+
+  # Output directory for processed images with detections
+  output_dir: "output/"
+
+  # Model data directory
+  model_data: "model_data/"
+
+# Visualization Settings
+visualization:
+  # Font size for labels
+  font_size: 18
+
+  # Box line thickness
+  box_thickness: 2
+
+  # Output image quality (1-100)
+  image_quality: 95
+
+  # Whether to display detection info on console
+  verbose: true
+
+# Performance
+performance:
+  # Batch size for processing multiple images
+  batch_size: 1
+
+  # Whether to use GPU acceleration
+  use_gpu: true
